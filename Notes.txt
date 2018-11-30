@@ -1,0 +1,14 @@
+npm i polymer-cli -g
+polymer init polymer-3-starter-kit
+npm i @polymer/paper-fab -S
+npm i @polymer/paper-dialog -S
+npm i @polymer/paper-button -S
+
+
+this.$.catImage.src = 'http://thecatapi.com/api/images/get?format=src&type=gif&rand=' + Math.random();
+this.$.catImage.onload = this.$.dialog.notifyResize.bind(this.$.dialog);
+
+#Open Browser windows
+https://www.webcomponents.org/element/PolymerElements/paper-fab
+https://www.webcomponents.org/element/PolymerElements/paper-dialog
+https://www.webcomponents.org/element/PolymerElements/paper-dialog/elements/paper-dialog
