@@ -21,6 +21,9 @@ import '@polymer/app-route/app-route.js';
 import '@polymer/iron-pages/iron-pages.js';
 import '@polymer/iron-selector/iron-selector.js';
 import '@polymer/paper-icon-button/paper-icon-button.js';
+import '@polymer/paper-fab/paper-fab.js';
+import '@polymer/paper-button/paper-button.js';
+import '@polymer/paper-dialog/paper-dialog.js';
 import './my-icons.js';
 
 // Gesture events like tap and track generated from touch will not be
@@ -71,6 +74,12 @@ class MyApp extends PolymerElement {
           color: black;
           font-weight: bold;
         }
+
+        paper-fab {
+          position: absolute;
+          bottom: 25px;
+          right: 25px;
+        }
       </style>
 
       <app-location route="{{route}}" url-space-regex="^[[rootPath]]">
@@ -106,8 +115,18 @@ class MyApp extends PolymerElement {
             <my-view3 name="view3"></my-view3>
             <my-view404 name="view404"></my-view404>
           </iron-pages>
+
         </app-header-layout>
       </app-drawer-layout>
+      <paper-fab on-tap='openDialog' label="😻"></paper-fab>
+      <paper-dialog id="dialog" modal>
+            <h2>Cat Image</h2>
+            <img id="catImage">
+            <div class="buttons">
+              <paper-button dialog-dismiss>Cancel</paper-button>
+              <paper-button dialog-confirm autofocus>Accept</paper-button>
+            </div>
+          </paper-dialog>
     `;
   }
 
@@ -127,6 +146,12 @@ class MyApp extends PolymerElement {
     return [
       '_routePageChanged(routeData.page)'
     ];
+  }
+
+  openDialog() {
+    this.$.catImage.src = 'http://thecatapi.com/api/images/get?format=src&type=gif&rand=' + Math.random();
+    this.$.catImage.onload = this.$.dialog.notifyResize.bind(this.$.dialog);
+    this.$.dialog.open();
   }
 
   _routePageChanged(page) {

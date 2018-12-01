@@ -3,12 +3,15 @@ polymer init polymer-3-starter-kit
 npm i @polymer/paper-fab -S
 npm i @polymer/paper-dialog -S
 npm i @polymer/paper-button -S
+npm i @polymer/iron-icons -S
+rm -rf node_modules package-lock.json
+npm install
 
 
 this.$.catImage.src = 'http://thecatapi.com/api/images/get?format=src&type=gif&rand=' + Math.random();
 this.$.catImage.onload = this.$.dialog.notifyResize.bind(this.$.dialog);
 
 #Open Browser windows
-https://www.webcomponents.org/element/PolymerElements/paper-fab
-https://www.webcomponents.org/element/PolymerElements/paper-dialog
-https://www.webcomponents.org/element/PolymerElements/paper-dialog/elements/paper-dialog
+https://www.webcomponents.org/element/@polymer/paper-fab/
+https://www.webcomponents.org/element/@polymer/paper-button/
+https://www.webcomponents.org/element/@polymer/paper-dialog/elements/paper-dialog
